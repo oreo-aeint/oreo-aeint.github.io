@@ -62,7 +62,7 @@ export function Projects({ onSelectProject }: ProjectsProps) {
               className="group relative flex flex-col overflow-hidden rounded-2xl border border-[#303039] bg-[#1A1A22] transition-all duration-200 hover:-translate-y-1 hover:border-[#C6283D]/60 hover:shadow-[0_20px_48px_-18px_rgba(198,40,61,0.22)]"
             >
               {/* Upper Card Preview Area — 3-Phone Showcase */}
-              <div className="relative aspect-[16/11] sm:aspect-[16/10] w-full overflow-hidden border-b border-[#303039] bg-[#101014]">
+              <div className="relative aspect-[4/3] sm:aspect-[16/10] w-full overflow-hidden border-b border-[#303039] bg-[#101014]">
                 <PhoneTriptych
                   projectName={project.name}
                   showcase={project.showcase}
