@@ -1,5 +1,8 @@
 import type { ProjectShowcaseConfig } from '../components/PhoneTriptych';
 
+const assetUrl = (path: string) =>
+  `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`;
+
 export type ProjectStatus = 'Completed' | 'In Progress';
 
 export interface ProjectItem {
@@ -40,7 +43,7 @@ export const PORTFOLIO_CONFIG = {
   roleLine: 'Computer Science Student · Software Developer',
   heroSummary:
     'I enjoy turning ideas into functional applications through thoughtful design and development.',
-  profileImagePath: '/images/profile.png',
+  profileImagePath: assetUrl('/images/profile.png'),
   email: 'painskull8210@gmail.com',
   githubUrl: 'https://github.com/oreo-aeint',
   githubHandle: '@oreo-aeint',
@@ -156,9 +159,9 @@ export const PROJECTS: ProjectItem[] = [
     technologies: ['Flutter', 'Dart', 'Firebase', 'Supabase'],
     showcase: {
       screens: [
-        '/images/projects/miit-payment.png',
-        '/images/projects/miit-enrollment.png',
-        '/images/projects/miit-dashboard-mobile.png',
+        assetUrl('/images/projects/miit-payment.png'),
+        assetUrl('/images/projects/miit-enrollment.png'),
+        assetUrl('/images/projects/miit-dashboard-mobile.png'),
       ],
       addDeviceFrame: true,
     },
@@ -186,9 +189,9 @@ export const PROJECTS: ProjectItem[] = [
     technologies: ['React', 'TypeScript', 'SQLite'],
     showcase: {
       screens: [
-        '/images/projects/t-finance-transaction.png',
-        '/images/projects/t-finance-home.png',
-        '/images/projects/t-finance-activity.png',
+        assetUrl('/images/projects/t-finance-transaction.png'),
+        assetUrl('/images/projects/t-finance-home.png'),
+        assetUrl('/images/projects/t-finance-activity.png'),
       ],
       addDeviceFrame: true,
     },
