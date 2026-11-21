@@ -30,6 +30,7 @@ function PhoneSlot({
 }: PhoneSlotProps) {
   const [imgError, setImgError] = useState(false);
   const showImage = Boolean(src) && !imgError;
+  const isSideSlot = slotIndex !== 1;
 
   if (showImage && !addDeviceFrame) {
     return (
@@ -55,14 +56,18 @@ function PhoneSlot({
         className="pointer-events-none absolute top-[1.5px] left-1/2 z-20 h-[1.5px] w-[20%] -translate-x-1/2 rounded-full bg-[#303039]"
       />
 
-      <div className="relative w-full aspect-[9/19] overflow-hidden rounded-[13px] sm:rounded-[16px] bg-[#09090B]">
+      <div className="relative w-full aspect-[9/19] overflow-hidden rounded-[13px] sm:rounded-[16px] bg-[#09090B] isolate [transform:translateZ(0)]">
         {showImage ? (
           <img
             src={src}
             alt={alt}
             referrerPolicy="no-referrer"
             onError={() => setImgError(true)}
-            className="absolute inset-0 block h-full w-full object-cover object-center"
+            className={`absolute inset-0 block h-full w-full rounded-[13px] sm:rounded-[16px] object-cover object-center transition-all duration-300 ${
+              isSideSlot
+                ? 'opacity-90 blur-[0.5px] group-hover:opacity-100 group-hover:blur-0'
+                : ''
+            }`}
           />
         ) : (
           <div className="flex h-full w-full flex-col items-center justify-center bg-[radial-gradient(circle_at_50%_35%,rgba(198,40,61,0.16),transparent_65%),linear-gradient(180deg,#1A1A22_0%,#101014_100%)] px-2 text-center">
@@ -99,7 +104,7 @@ export function PhoneTriptych({ projectName, showcase }: PhoneTriptychProps) {
           alt={`${projectName} mobile preview 1`}
           addDeviceFrame={addDeviceFrame}
           slotIndex={0}
-          className="w-[29.5%] sm:w-[26%] max-w-[126px] -rotate-[7deg] translate-y-2.5 opacity-90 blur-[0.5px] transition-all duration-300 ease-out group-hover:-rotate-[9deg] group-hover:-translate-x-1 group-hover:opacity-100 group-hover:blur-0"
+          className="w-[29.5%] sm:w-[26%] max-w-[126px] -rotate-[7deg] translate-y-2.5 transition-transform duration-300 ease-out group-hover:-rotate-[9deg] group-hover:-translate-x-1"
         />
 
         <PhoneSlot
@@ -115,7 +120,7 @@ export function PhoneTriptych({ projectName, showcase }: PhoneTriptychProps) {
           alt={`${projectName} mobile preview 3`}
           addDeviceFrame={addDeviceFrame}
           slotIndex={2}
-          className="w-[29.5%] sm:w-[26%] max-w-[126px] rotate-[7deg] translate-y-2.5 opacity-90 blur-[0.5px] transition-all duration-300 ease-out group-hover:rotate-[9deg] group-hover:translate-x-1 group-hover:opacity-100 group-hover:blur-0"
+          className="w-[29.5%] sm:w-[26%] max-w-[126px] rotate-[7deg] translate-y-2.5 transition-transform duration-300 ease-out group-hover:rotate-[9deg] group-hover:translate-x-1"
         />
       </div>
     </div>
