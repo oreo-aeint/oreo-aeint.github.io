@@ -47,22 +47,22 @@ function PhoneSlot({
 
   return (
     <div
-      className={`relative aspect-[9/19.5] rounded-[16px] sm:rounded-[20px] border-[1.5px] border-[#92929D]/55 bg-[#09090B] px-[3px] pt-[6px] pb-[5px] sm:px-[4px] sm:pt-[7px] sm:pb-[6px] shadow-[0_20px_42px_rgba(0,0,0,0.88)] ${className}`}
+      className={`relative shrink-0 aspect-[9/18.5] rounded-[16px] sm:rounded-[20px] border-[1.5px] border-[#92929D]/55 bg-[#09090B] p-[3px] sm:p-[4px] shadow-[0_20px_42px_rgba(0,0,0,0.88)] ${className}`}
     >
-      {/* Top bezel speaker slit (sits on bezel without covering screenshot pixels) */}
+      {/* Top bezel speaker slit */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute top-[2.5px] left-1/2 z-20 h-[2px] w-[22%] -translate-x-1/2 rounded-full bg-[#303039]"
+        className="pointer-events-none absolute top-[1.5px] left-1/2 z-20 h-[1.5px] w-[20%] -translate-x-1/2 rounded-full bg-[#303039]"
       />
 
-      <div className="relative h-full w-full overflow-hidden rounded-[12px] sm:rounded-[15px] bg-[#09090B]">
+      <div className="relative h-full w-full overflow-hidden rounded-[13px] sm:rounded-[16px] bg-[#09090B]">
         {showImage ? (
           <img
             src={src}
             alt={alt}
             referrerPolicy="no-referrer"
             onError={() => setImgError(true)}
-            className="h-full w-full object-cover object-center"
+            className="absolute inset-0 h-full w-full object-cover object-[50%_72%]"
           />
         ) : (
           <div className="flex h-full w-full flex-col items-center justify-center bg-[radial-gradient(circle_at_50%_35%,rgba(198,40,61,0.16),transparent_65%),linear-gradient(180deg,#1A1A22_0%,#101014_100%)] px-2 text-center">
@@ -85,7 +85,7 @@ export function PhoneTriptych({ projectName, showcase }: PhoneTriptychProps) {
   const addDeviceFrame = showcase?.addDeviceFrame ?? true;
 
   return (
-    <div className="relative flex h-full w-full items-center justify-center overflow-hidden bg-[#101014] px-4 pt-4 pb-3 select-none">
+    <div className="relative flex h-full w-full items-center justify-center overflow-hidden bg-[#101014] px-4 py-3 sm:py-4 select-none">
       {/* Dark-crimson studio backdrop glow matching reference composition */}
       <div
         aria-hidden="true"
@@ -93,13 +93,13 @@ export function PhoneTriptych({ projectName, showcase }: PhoneTriptychProps) {
       />
 
       {/* 3-Phone Fanned Triptych */}
-      <div className="relative z-10 flex h-full w-full items-center justify-center gap-3 sm:gap-5">
+      <div className="relative z-10 flex h-full w-full items-center justify-center gap-2.5 sm:gap-4">
         <PhoneSlot
           src={screens?.[0]}
           alt={`${projectName} mobile preview 1`}
           addDeviceFrame={addDeviceFrame}
           slotIndex={0}
-          className="w-[24%] sm:w-[26%] max-w-[126px] -rotate-[7deg] translate-y-2.5 transition-transform duration-300 ease-out group-hover:-rotate-[9deg] group-hover:-translate-x-1"
+          className="w-[26.5%] sm:w-[27.5%] max-w-[132px] -rotate-[6deg] translate-y-2 transition-transform duration-300 ease-out group-hover:-rotate-[8deg] group-hover:-translate-x-1"
         />
 
         <PhoneSlot
@@ -107,7 +107,7 @@ export function PhoneTriptych({ projectName, showcase }: PhoneTriptychProps) {
           alt={`${projectName} mobile preview 2`}
           addDeviceFrame={addDeviceFrame}
           slotIndex={1}
-          className="z-10 w-[26%] sm:w-[28%] max-w-[134px] -translate-y-1 transition-transform duration-300 ease-out group-hover:-translate-y-2.5"
+          className="z-10 w-[28.5%] sm:w-[29.5%] max-w-[140px] -translate-y-1 transition-transform duration-300 ease-out group-hover:-translate-y-2"
         />
 
         <PhoneSlot
@@ -115,7 +115,7 @@ export function PhoneTriptych({ projectName, showcase }: PhoneTriptychProps) {
           alt={`${projectName} mobile preview 3`}
           addDeviceFrame={addDeviceFrame}
           slotIndex={2}
-          className="w-[24%] sm:w-[26%] max-w-[126px] rotate-[7deg] translate-y-2.5 transition-transform duration-300 ease-out group-hover:rotate-[9deg] group-hover:translate-x-1"
+          className="w-[26.5%] sm:w-[27.5%] max-w-[132px] rotate-[6deg] translate-y-2 transition-transform duration-300 ease-out group-hover:rotate-[8deg] group-hover:translate-x-1"
         />
       </div>
     </div>
